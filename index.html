@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,25 +11,33 @@
 <body>
 
 <header>
+
 <div class="logo">⚡ VINZZZ REST API</div>
 
 <nav>
-<a href="#">Dashboard</a>
-<a href="#">Docs</a>
-<a href="#">Status</a>
-<a href="#">Github</a>
+<a href="#docs">Docs</a>
+<a href="#status">Status</a>
+<a href="#test">Test API</a>
 </nav>
 
-<button id="soundToggle">🔊 Sound</button>
+<button id="soundToggle">🔊</button>
+
 </header>
 
 
 <section class="hero">
 
 <h1>Shortlink Bypass API</h1>
-<p>High speed REST API for bypassing shortlinks</p>
+<p>High speed REST API</p>
 
-<div class="api-box">
+</section>
+
+
+<section id="docs" class="section">
+
+<h2>API Documentation</h2>
+
+<div class="doc-card">
 
 <div class="method">GET</div>
 
@@ -36,42 +45,74 @@
 /api/skip/safelinku
 </div>
 
+<button id="sendGet">SEND</button>
+
+</div>
+
+<div class="params">
+
+<p><b>apikey</b> : your api key</p>
+<p><b>url</b> : safelinku url</p>
+
 </div>
 
 </section>
 
 
-<section class="docs">
 
-<h2>Example Request</h2>
-
-<div class="code-box">
-<code>
-https://yourdomain.com/api/skip/safelinku?apikey=YOURKEY&url=https://safelinku.com/xxxx
-</code>
-</div>
-
+<section id="test" class="section">
 
 <h2>Response</h2>
 
-<div class="code-box">
-<code>
-{
- "status": true,
- "result": "https://download-link.com/file"
-}
-</code>
+<div class="response-box">
+
+<div class="status" id="statusCode">
+Status: -
+</div>
+
+<pre id="response"></pre>
+
 </div>
 
 </section>
+
+
+
+<section id="status" class="section">
+
+<h2>API Status</h2>
+
+<div class="status-grid">
+
+<div class="status-card">
+<h3>Server</h3>
+<p class="online">ONLINE</p>
+</div>
+
+<div class="status-card">
+<h3>Latency</h3>
+<p id="latency">12ms</p>
+</div>
+
+<div class="status-card">
+<h3>Requests</h3>
+<p id="requests">1243</p>
+</div>
+
+</div>
+
+</section>
+
 
 
 <section class="terminal">
 
-<h2>Server Log</h2>
-<pre id="code"></pre>
+<h2>Server Logs</h2>
+
+<pre id="logs"></pre>
 
 </section>
+
 
 
 <audio id="bgSound" loop>
