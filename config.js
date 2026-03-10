@@ -1,11 +1,6 @@
-const config = {
-
-apikeys: [
-"vinzzz",
-"botzzvinzzz",
-"freeuser"
-],
-
+module.exports = {
+apikeys:[
+"VINZZZKEY",
+"TESTKEY"
+]
 }
-
-module.exports = config

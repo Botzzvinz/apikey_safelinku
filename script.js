@@ -3,6 +3,9 @@ const sendBtn = document.getElementById("sendGet")
 const responseBox = document.getElementById("response")
 const statusCode = document.getElementById("statusCode")
 
+const apikeyInput = document.getElementById("apikey")
+const urlInput = document.getElementById("url")
+
 function log(text){
 
 const time = new Date().toLocaleTimeString()
@@ -13,61 +16,57 @@ logs.scrollTop = logs.scrollHeight
 
 }
 
-sendBtn.onclick=()=>{
+sendBtn.onclick = async ()=>{
 
-log("Incoming GET /api/skip/safelinku")
+const apikey = apikeyInput.value
+const url = urlInput.value
 
-const codes=[200,400,401,404,500]
+if(!apikey || !url){
 
-const code=codes[Math.floor(Math.random()*codes.length)]
-
-statusCode.innerText="Status: "+code
-
-if(code===200){
-
-responseBox.innerText=JSON.stringify({
-status:true,
-result:"https://download-link.com/file"
+responseBox.innerText = JSON.stringify({
+status:false,
+message:"apikey dan url wajib diisi"
 },null,2)
+
+return
+
+}
+
+const endpoint = `/api/skip/safelinku?apikey=${apikey}&url=${encodeURIComponent(url)}`
+
+log("Incoming GET "+endpoint)
+
+try{
+
+const res = await fetch(endpoint)
+
+statusCode.innerText = "Status: " + res.status
+
+const data = await res.json()
+
+responseBox.innerText = JSON.stringify(data,null,2)
+
+if(res.status === 200){
 
 log("Response 200 OK")
 
 }else{
 
-responseBox.innerText=JSON.stringify({
+log("Response "+res.status+" ERROR")
+
+}
+
+}catch(err){
+
+statusCode.innerText = "Status: NETWORK ERROR"
+
+responseBox.innerText = JSON.stringify({
 status:false,
-message:"request failed"
+message:"server tidak dapat dihubungi"
 },null,2)
 
-log("Response "+code+" ERROR")
+log("Network Error")
 
-}
-
-}
-
-
-function copyEndpoint(){
-
-navigator.clipboard.writeText("/api/skip/safelinku")
-
-alert("Endpoint copied")
-
-}
-
-
-const sound=document.getElementById("bgSound")
-const toggle=document.getElementById("soundToggle")
-
-let playing=false
-
-toggle.onclick=()=>{
-
-if(!playing){
-sound.play()
-playing=true
-}else{
-sound.pause()
-playing=false
 }
 
 }
