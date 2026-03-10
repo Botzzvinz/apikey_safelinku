@@ -15,9 +15,10 @@
 <div class="logo">⚡ VINZZZ REST API</div>
 
 <nav>
+<a href="#dashboard">Dashboard</a>
 <a href="#docs">Docs</a>
 <a href="#status">Status</a>
-<a href="#test">Test API</a>
+<a href="#playground">Playground</a>
 </nav>
 
 <button id="soundToggle">🔊</button>
@@ -25,15 +26,30 @@
 </header>
 
 
-<section class="hero">
+<section id="dashboard" class="hero">
 
 <h1>Shortlink Bypass API</h1>
-<p>High speed REST API</p>
+<p>High performance REST API for bypassing shortlinks</p>
+
+<div class="endpoint-box">
+
+<span class="method">GET</span>
+
+<span class="url">
+/api/skip/safelinku
+</span>
+
+<button onclick="copyEndpoint()">COPY</button>
+
+</div>
 
 </section>
 
 
-<section id="docs" class="section">
+<div class="divider"></div>
+
+
+<section id="docs" class="docs">
 
 <h2>API Documentation</h2>
 
@@ -45,40 +61,37 @@
 /api/skip/safelinku
 </div>
 
-<button id="sendGet">SEND</button>
-
 </div>
 
-<div class="params">
+<h3>Parameters</h3>
 
-<p><b>apikey</b> : your api key</p>
-<p><b>url</b> : safelinku url</p>
+<ul>
+<li><b>apikey</b> → your api key</li>
+<li><b>url</b> → safelinku url</li>
+</ul>
 
+<h3>Example Request</h3>
+
+<div class="code-box">
+https://yourdomain.com/api/skip/safelinku?apikey=YOURKEY&url=https://safelinku.com/xxxx
 </div>
 
-</section>
+<h3>Response</h3>
 
-
-
-<section id="test" class="section">
-
-<h2>Response</h2>
-
-<div class="response-box">
-
-<div class="status" id="statusCode">
-Status: -
-</div>
-
-<pre id="response"></pre>
-
+<div class="code-box">
+{
+ "status": true,
+ "result": "https://download-link.com/file"
+}
 </div>
 
 </section>
 
 
+<div class="divider"></div>
 
-<section id="status" class="section">
+
+<section id="status" class="status">
 
 <h2>API Status</h2>
 
@@ -95,14 +108,44 @@ Status: -
 </div>
 
 <div class="status-card">
-<h3>Requests</h3>
-<p id="requests">1243</p>
+<h3>Total Requests</h3>
+<p id="requests">1234</p>
 </div>
 
 </div>
 
 </section>
 
+
+<div class="divider"></div>
+
+
+<section id="playground" class="playground">
+
+<h2>API Playground</h2>
+
+<div class="play-box">
+
+<input id="apikey" placeholder="API KEY">
+
+<input id="url" placeholder="Safelinku URL">
+
+<button id="sendGet">SEND GET</button>
+
+</div>
+
+<div class="response">
+
+<div id="statusCode">Status: -</div>
+
+<pre id="response"></pre>
+
+</div>
+
+</section>
+
+
+<div class="divider"></div>
 
 
 <section class="terminal">
@@ -112,7 +155,6 @@ Status: -
 <pre id="logs"></pre>
 
 </section>
-
 
 
 <audio id="bgSound" loop>
