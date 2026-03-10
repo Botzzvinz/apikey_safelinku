@@ -1,27 +1,60 @@
-const code = document.getElementById("code")
+const responseBox = document.getElementById("response")
+const statusCode = document.getElementById("statusCode")
+const sendBtn = document.getElementById("sendGet")
 
-const logs = [
-"Starting API server...",
-"Loading modules...",
-"Connecting bypass engine...",
-"Safelinku bypass module ready",
-"Loading 200+ shortlink handlers...",
-"Server listening requests...",
-"API ready",
+sendBtn.onclick = ()=>{
+
+const codes = [200,201,204,300,400,401,404,500]
+
+const code = codes[Math.floor(Math.random()*codes.length)]
+
+statusCode.innerText = "Status: " + code
+
+let data
+
+if(code === 200){
+
+data = {
+status:true,
+result:"https://download-link.com/file"
+}
+
+}else{
+
+data = {
+status:false,
+message:"error processing request"
+}
+
+}
+
+responseBox.innerText = JSON.stringify(data,null,2)
+
+}
+
+
+
+const logs = document.getElementById("logs")
+
+const serverLogs = [
+"Starting server...",
+"Loading bypass modules...",
+"Connecting database...",
+"Listening API requests...",
 "Monitoring traffic..."
 ]
 
 function addLog(){
 
-const text = logs[Math.floor(Math.random()*logs.length)]
+const line = serverLogs[Math.floor(Math.random()*serverLogs.length)]
 
-code.innerHTML += text + "\n"
+logs.innerHTML += line + "\n"
 
-code.scrollTop = code.scrollHeight
+logs.scrollTop = logs.scrollHeight
 
 }
 
-setInterval(addLog,1200)
+setInterval(addLog,1500)
 
 
 
@@ -33,17 +66,11 @@ let playing=false
 toggle.onclick=()=>{
 
 if(!playing){
-
 sound.play()
-toggle.innerText="🔇 Mute"
 playing=true
-
 }else{
-
 sound.pause()
-toggle.innerText="🔊 Sound"
 playing=false
-
 }
 
 }
