@@ -1,37 +1,49 @@
 const code = document.getElementById("code")
 
-const lines = [
-"Initializing server...",
-"Loading bypass modules...",
-"Connecting API gateway...",
-"Checking Safelinku bypass...",
-"Loading 200+ shortlink modules...",
-"Starting endpoint /api/skip",
-"Server status: ONLINE",
-"Monitoring requests...",
+const logs = [
+"Starting API server...",
+"Loading modules...",
+"Connecting bypass engine...",
+"Safelinku bypass module ready",
+"Loading 200+ shortlink handlers...",
+"Server listening requests...",
+"API ready",
+"Monitoring traffic..."
 ]
 
-function randomLine(){
-const line = lines[Math.floor(Math.random()*lines.length)]
-code.innerHTML += line + "\n"
+function addLog(){
+
+const text = logs[Math.floor(Math.random()*logs.length)]
+
+code.innerHTML += text + "\n"
+
 code.scrollTop = code.scrollHeight
+
 }
 
-setInterval(randomLine,1200)
+setInterval(addLog,1200)
+
+
 
 const sound = document.getElementById("bgSound")
 const toggle = document.getElementById("soundToggle")
 
-let playing = false
+let playing=false
 
-toggle.onclick = ()=>{
+toggle.onclick=()=>{
+
 if(!playing){
+
 sound.play()
 toggle.innerText="🔇 Mute"
 playing=true
+
 }else{
+
 sound.pause()
 toggle.innerText="🔊 Sound"
 playing=false
+
 }
+
 }

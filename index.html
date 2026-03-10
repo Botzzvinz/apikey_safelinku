@@ -3,44 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VINZZZ API DASHBOARD</title>
+<title>VINZZZ REST API</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="background"></div>
-
 <header>
-<h1>⚡ VINZZZ API</h1>
+<div class="logo">⚡ VINZZZ REST API</div>
+
+<nav>
+<a href="#">Dashboard</a>
+<a href="#">Docs</a>
+<a href="#">Status</a>
+<a href="#">Github</a>
+</nav>
+
 <button id="soundToggle">🔊 Sound</button>
 </header>
 
-<div class="container">
 
-<div class="card">
-<h2>API STATUS</h2>
-<p class="online">ONLINE</p>
-</div>
+<section class="hero">
 
-<div class="card">
-<h2>Endpoint</h2>
-<code>/api/skip/safelinku</code>
-</div>
+<h1>Shortlink Bypass API</h1>
+<p>High speed REST API for bypassing shortlinks</p>
 
-<div class="card">
-<h2>Server</h2>
-<p>Running Secure</p>
+<div class="api-box">
+
+<div class="method">GET</div>
+
+<div class="endpoint">
+/api/skip/safelinku
 </div>
 
 </div>
 
-<div class="terminal">
+</section>
+
+
+<section class="docs">
+
+<h2>Example Request</h2>
+
+<div class="code-box">
+<code>
+https://yourdomain.com/api/skip/safelinku?apikey=YOURKEY&url=https://safelinku.com/xxxx
+</code>
+</div>
+
+
+<h2>Response</h2>
+
+<div class="code-box">
+<code>
+{
+ "status": true,
+ "result": "https://download-link.com/file"
+}
+</code>
+</div>
+
+</section>
+
+
+<section class="terminal">
+
+<h2>Server Log</h2>
 <pre id="code"></pre>
-</div>
+
+</section>
+
 
 <audio id="bgSound" loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5f7d3e0b3b.mp3">
+<source src="./databases/sound.mp3">
 </audio>
 
 <script src="script.js"></script>
